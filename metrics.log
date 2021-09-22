@@ -1,0 +1,7 @@
+2021-09-22T18:43:17.034+0800	INFO	promethous-metrics/main.go:115	begin to server on port 8080
+2021-09-22T18:43:17.035+0800	INFO	promethous-metrics/main.go:118	listen tcp :8080: bind: address already in use
+2021-09-22T18:43:39.449+0800	INFO	promethous-metrics/main.go:115	begin to server on port 8080
+2021-09-22T18:43:50.392+0800	INFO	promethous-metrics/main.go:77	collector.ovsMetricDesc{fqName: "ovs_bond_zhang", help: "Show ovs bond status-zhangchao123", constLabels: {zhaoshangbank="访问量"}, variableLabels: [zhang zeng]}prometheus.CounterValue1metricValue1000
+2021-09-22T18:44:03.217+0800	INFO	promethous-metrics/main.go:77	collector.ovsMetricDesc{fqName: "ovs_bond_zhang", help: "Show ovs bond status-zhangchao123", constLabels: {zhaoshangbank="访问量"}, variableLabels: [zhang zeng]}prometheus.CounterValue1metricValue1000
+{"level":"INFO","ts":"2021-09-22T18:54:45.035+0800","caller":"promethous-metrics/main.go:115","msg":"begin to server on port 8080"}
+{"level":"INFO","ts":"2021-09-22T18:54:49.033+0800","caller":"promethous-metrics/main.go:77","msg":"collector.ovsMetricDesc{fqName: \"ovs_bond_zhang\", help: \"Show ovs bond status-zhangchao123\", constLabels: {zhaoshangbank=\"访问量\"}, variableLabels: [zhang zeng]}prometheus.CounterValue1metricValue1000"}

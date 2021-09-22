@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	log "github.com/sirupsen/logrus"
 	"net/http"
+	log "promethous-metrics/log"
 	"strings"
 )
 //如果你想为你的metrics设置其他的label  就要设置label 和value 必须是切片variableLabels []string
@@ -74,7 +74,7 @@ func (collector *ovsCollector) Collect(ch chan<- prometheus.Metric) {
 		metricValue =1000
 		test1 =10
 
-		//fmt.Println("collector.ovsMetric",collector.ovsMetric,"prometheus.CounterValue",prometheus.CounterValue,"metricValue",metricValue)】
+		log.SugarLogger.Info("collector.ovsMetric",collector.ovsMetric,"prometheus.CounterValue",prometheus.CounterValue,"metricValue",metricValue)
 		//直接塞进去就就可以了
 		ch <- prometheus.MustNewConstMetric(collector.ovsMetric, prometheus.CounterValue, metricValue,vValue...)
 	    ch <- prometheus.MustNewConstMetric(collector.barMetric, prometheus.CounterValue,test1 )
@@ -106,15 +106,16 @@ func getBondStatus() (m map[string]string) {
 }
 
 func main() {
-
+	log.InitLogger()
+	defer log.SugarLogger.Sync()
 	ovs := newOvsCollector()
 	prometheus.MustRegister(ovs)
 
 	http.Handle("/metrics", promhttp.Handler())
-
-	log.Info("begin to server on port 8080")
+	log.SugarLogger.Info("begin to server on port 8080")
+	//log.Info("begin to server on port 8080")
 	// listen on port 8080
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.SugarLogger.Info(http.ListenAndServe(":8080", nil))
 }
 
 
